@@ -219,6 +219,8 @@ export const Hero = () => {
                   <img
                     src={PROFILE.photo}
                     alt={`${PROFILE.name} portrait`}
+                    width={640}
+                    height={640}
                     className="h-full w-full object-cover object-top"
                     loading="eager"
                   />
