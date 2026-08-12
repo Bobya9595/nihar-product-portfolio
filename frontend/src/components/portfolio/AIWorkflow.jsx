@@ -40,7 +40,7 @@ export const AIWorkflow = () => {
   }, []);
 
   return (
-    <section ref={ref} className="relative py-20 sm:py-28 lg:py-32">
+    <section ref={ref} className="relative py-16 sm:py-28 lg:py-32">
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[600px] rounded-full bg-emerald-500/[0.06] blur-[120px]" />
       </div>

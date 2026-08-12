@@ -121,9 +121,9 @@ export const Hero = () => {
           {/* Left */}
           <div>
             <Reveal>
-              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-500/5 px-3.5 py-1.5">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 pulse-dot" />
-                <span className="font-mono text-[11px] tracking-[0.22em] uppercase text-emerald-300">
+              <div className="inline-flex max-w-full items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-500/5 px-3 sm:px-3.5 py-1.5">
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400 pulse-dot" />
+                <span className="font-mono text-[10px] sm:text-[11px] tracking-[0.12em] sm:tracking-[0.22em] uppercase text-emerald-300">
                   {PROFILE.eyebrow}
                 </span>
               </div>
@@ -132,7 +132,7 @@ export const Hero = () => {
             <Reveal delay={0.06}>
               <h1
                 data-testid="hero-headline"
-                className="mt-6 text-4xl sm:text-5xl lg:text-[3.75rem] font-extrabold tracking-tight text-white leading-[1.04]"
+                className="mt-6 hero-headline font-extrabold tracking-tight text-white"
               >
                 {PROFILE.heroLine[0]}{" "}
                 <span className="text-gradient-emerald">{PROFILE.heroLine[1]}</span>
@@ -168,11 +168,11 @@ export const Hero = () => {
             </Reveal>
 
             <Reveal delay={0.22}>
-              <div className="mt-8 flex flex-wrap items-center gap-3">
+              <div className="mt-8 flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3">
                 <button
                   data-testid="hero-cta-primary"
                   onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
-                  className="group inline-flex items-center gap-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-[#04160f] px-5 py-3 text-sm font-semibold transition-colors"
+                  className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-[#04160f] px-5 py-3 text-sm font-semibold transition-colors"
                 >
                   Explore My Work
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -181,7 +181,7 @@ export const Hero = () => {
                   data-testid="hero-cta-resume"
                   href={PROFILE.resume}
                   download
-                  className="group inline-flex items-center gap-2 rounded-xl border border-white/15 hover:border-white/30 bg-white/[0.03] hover:bg-white/[0.06] text-white px-5 py-3 text-sm font-semibold transition-colors"
+                  className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl border border-white/15 hover:border-white/30 bg-white/[0.03] hover:bg-white/[0.06] text-white px-5 py-3 text-sm font-semibold transition-colors"
                 >
                   Download Resume
                   <Download className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />

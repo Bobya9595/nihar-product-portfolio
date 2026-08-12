@@ -2,7 +2,7 @@ import { PROCESS } from "../../data/portfolio";
 import { Reveal, SectionHeader } from "./shared";
 
 export const Process = () => (
-  <section className="relative py-20 sm:py-28 lg:py-32">
+  <section className="relative py-16 sm:py-28 lg:py-32">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <SectionHeader eyebrow="Method" title="How I Turn Problems Into Products" />
       <div className="relative">

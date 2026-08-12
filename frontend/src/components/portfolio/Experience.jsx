@@ -7,7 +7,7 @@ import { Reveal, SectionHeader } from "./shared";
 export const Experience = () => {
   const [open, setOpen] = useState(0);
   return (
-    <section id="experience" className="relative py-20 sm:py-28 lg:py-32">
+    <section id="experience" className="relative py-16 sm:py-28 lg:py-32">
       <div className="absolute inset-0 -z-10 grid-bg grid-fade opacity-40" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader eyebrow="Career" title="Experience" sub="An interactive timeline of roles where I turned operations into products and automation." />

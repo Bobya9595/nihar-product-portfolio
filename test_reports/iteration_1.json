@@ -1,0 +1,34 @@
+{
+  "summary": "Mobile responsiveness verification at 320/375/390/430/768px on the portfolio SPA. Most requirements pass, but 3 real bugs remain: (1) The page horizontally scrolls on mobile (user can scroll right by 113-140px) because overflow-x:hidden is only on body and not on html — decorative absolute/fixed background blur elements push scrollWidth beyond innerWidth. (2) The case-study modal close button does not close the modal (only Escape works). (3) The mobile hamburger menu overlay does NOT close after tapping a mobile nav link.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "index.css / global layout", "issue": "Horizontal scrolling is enabled on mobile. html scrollWidth is 460/488/495/515 at widths 320/375/390/430 while innerWidth matches viewport. window.scrollX becomes 113 after window.scrollTo(200,0) on 375px, so users CAN horizontally scroll. Root cause: body has overflow-x:hidden but html has overflow-x:visible, and fixed decorative blur divs (e.g. .pointer-events-none.fixed.top-0.left-0.w-[500px], several absolute -right-24 / left-1/2 blurs) extend past the viewport. Fix: add overflow-x:hidden to html (or html, body { overflow-x: hidden; max-width: 100vw }).", "selector": "html, body / decorative background blur divs", "priority": "HIGH"},
+      {"component": "Projects.jsx case-study modal", "issue": "Clicking data-testid=\"modal-close-button\" does not close the modal (case-study-modal remains visible). Escape key correctly closes it. Likely missing/incorrect onClick handler on the close button.", "selector": "[data-testid=\"modal-close-button\"]", "priority": "HIGH"},
+      {"component": "Navbar.jsx mobile menu", "issue": "Tapping a mobile nav link (e.g. data-testid=\"mobile-nav-link-projects\") scrolls to the section but does NOT close the mobile-menu overlay. Overlay remains visible and blocks page interaction. Handler should also setOpen(false)/close menu after click.", "selector": "[data-testid=\"mobile-menu\"] / mobile-nav-link-*", "priority": "HIGH"},
+      {"component": "Projects.jsx card-live-link", "issue": "data-testid=\"card-live-link-legalformat\" is a <span role=\"link\"> using window.open onClick — it has no href attribute. Spec expected href=https://legalformat.in/. Functionally opens the link but not accessible/href-verifiable. modal-live-link is correct (href=https://legalformat.in/).", "selector": "[data-testid=\"card-live-link-legalformat\"]", "priority": "LOW"}
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Add overflow-x:hidden to html element (and consider max-width:100vw on body) in /app/frontend/src/index.css to prevent horizontal scroll from decorative blur/gradient elements.",
+    "Fix modal-close-button in /app/frontend/src/components/portfolio/Projects.jsx so click actually closes the case-study modal (verify onClick wired to setActive(null) or equivalent).",
+    "In Navbar.jsx mobile menu, after clicking a mobile-nav-link-*, also call setOpen(false) so the overlay closes.",
+    "(Optional) Convert card-live-link-legalformat span to an anchor <a href={p.link}> for a real href attribute and better accessibility."
+  ],
+  "critical_code_review_comments": [
+    "overflow-x:hidden must be set on html, not just body, otherwise viewport-overflowing absolute/fixed decorative elements still allow horizontal scroll on mobile.",
+    "Modal close button and mobile menu link handlers should share the same 'close and act' pattern to avoid these bugs recurring.",
+    "card-live-link should be a real <a> tag with href for SEO/accessibility instead of a role=link span using window.open."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a", "frontend": "~75% (3 requirements fail out of ~13)"},
+  "test_credentials": "n/a",
+  "seed_data_creation": "none",
+  "retest_needed": true,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Verified widths 320/375/390/430/768. Passing: mobile hamburger visible <768, desktop nav visible at 768, hero headline visible & CTAs full-width stacked, product-thinking-node-* renders vertically, project-card-legalformat opens case-study modal (Escape closes it, modal fits viewport), modal-live-link href=https://legalformat.in/, hero-cta-resume href=/assets/Nihar_Chopade_CV.pdf (returns 200 via curl), contact-email-link mailto & contact-linkedin-link linkedin, empty contact submit shows error-name/email/message, valid submit shows success toast, no console errors on load, experience-timeline vertical & item-0 expands, skills 1-col on <=430 (visually verified). Failing: horizontal scroll on mobile (html overflow-x not hidden), modal-close-button does nothing, mobile menu does not auto-close after nav link tap. Note: card-live-link is span with onClick (no href) — spec expected href.",
+  "rca of the issue": "Horizontal scroll: body has overflow-x:hidden but html/documentElement doesn't. Decorative blur/gradient divs (fixed and absolute with negative margins & w-[500px]) extend past window.innerWidth. Because overflow-x is only on body, the html element still expands and remains horizontally scrollable. Reproduction: set viewport 375x812, load site, run window.scrollTo(200,0); window.scrollX returns 113 (not 0). Mitigation: in /app/frontend/src/index.css add `html { overflow-x: hidden; }` (or `html, body { overflow-x: hidden; max-width: 100vw; }`)."
+}

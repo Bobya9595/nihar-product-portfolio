@@ -108,7 +108,7 @@ export const Navbar = () => {
       <div
         data-testid="mobile-menu"
         className={`fixed inset-0 z-40 md:hidden transition-all duration-300 ${
-          open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          open ? "opacity-100 pointer-events-auto visible" : "opacity-0 pointer-events-none invisible"
         }`}
       >
         <div className="absolute inset-0 bg-[#0A0D12]/90 backdrop-blur-xl" onClick={() => setOpen(false)} />

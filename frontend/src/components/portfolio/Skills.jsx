@@ -14,12 +14,12 @@ const ICONS = {
 export const Skills = () => {
   const [activeGroup, setActiveGroup] = useState("Product");
   return (
-    <section id="skills" className="relative py-20 sm:py-28 lg:py-32">
+    <section id="skills" className="relative py-16 sm:py-28 lg:py-32">
       <div className="absolute inset-0 -z-10 grid-bg grid-fade opacity-40" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader eyebrow="Toolkit" title="Skills & Capabilities" sub="Clusters spanning product, data, AI, execution and domain expertise." />
 
-        <div data-testid="skills-cluster-section" className="grid lg:grid-cols-5 gap-4">
+        <div data-testid="skills-cluster-section" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {SKILLS.map((cluster, i) => {
             const Icon = ICONS[cluster.group] || Boxes;
             const active = activeGroup === cluster.group;

@@ -40,7 +40,7 @@ const CapabilityMap = () => {
 
 export const About = () => {
   return (
-    <section id="about" className="relative py-20 sm:py-28 lg:py-32">
+    <section id="about" className="relative py-16 sm:py-28 lg:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           eyebrow="About"

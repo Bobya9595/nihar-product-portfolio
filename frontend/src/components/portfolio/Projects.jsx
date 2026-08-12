@@ -54,8 +54,8 @@ const CaseStudyModal = ({ project, onClose }) => {
             <span className="font-mono text-[11px] tracking-[0.18em] uppercase text-emerald-300">{project.company}</span>
             <h3 className="mt-1 text-xl sm:text-2xl font-display font-bold text-white">{project.title}</h3>
           </div>
-          <button data-testid="modal-close-button" onClick={onClose} className="h-9 w-9 grid place-items-center rounded-lg border border-white/10 text-slate-400 hover:text-white hover:border-white/30 transition-colors">
-            <X className="h-4.5 w-4.5 h-5 w-5" />
+          <button type="button" data-testid="modal-close-button" onClick={(e) => { e.stopPropagation(); onClose(); }} className="relative z-20 h-9 w-9 grid place-items-center rounded-lg border border-white/10 text-slate-400 hover:text-white hover:border-white/30 transition-colors">
+            <X className="h-5 w-5" />
           </button>
         </div>
 
@@ -105,17 +105,20 @@ const CaseStudyModal = ({ project, onClose }) => {
 export const Projects = () => {
   const [selected, setSelected] = useState(null);
   return (
-    <section id="projects" className="relative py-20 sm:py-28 lg:py-32">
+    <section id="projects" className="relative py-16 sm:py-28 lg:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader eyebrow="Selected Work" title="Things I've Built" sub="Turning operational problems into scalable products and automation." />
 
         <div className="grid md:grid-cols-2 gap-5 sm:gap-6">
           {PROJECTS.map((p, i) => (
             <Reveal key={p.id} delay={(i % 2) * 0.08} className={p.featured ? "md:col-span-2" : ""}>
-              <button
+              <div
+                role="button"
+                tabIndex={0}
                 data-testid={`project-card-${p.id}`}
                 onClick={() => setSelected(p)}
-                className="group relative h-full w-full text-left rounded-2xl border border-white/10 bg-[#121824]/60 p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/40 hover:bg-[#161E2E] overflow-hidden"
+                onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setSelected(p); } }}
+                className="group relative h-full w-full cursor-pointer text-left rounded-2xl border border-white/10 bg-[#121824]/60 p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/40 hover:bg-[#161E2E] overflow-hidden"
               >
                 <div className="absolute -top-24 -right-24 h-48 w-48 rounded-full bg-emerald-500/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="relative flex items-start justify-between gap-3 mb-4">
@@ -143,20 +146,20 @@ export const Projects = () => {
                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </span>
                   {p.link && (
-                    <span
-                      role="link"
-                      tabIndex={0}
+                    <a
+                      href={p.link}
+                      target="_blank"
+                      rel="noreferrer"
                       data-testid={`card-live-link-${p.id}`}
-                      onClick={(e) => { e.stopPropagation(); window.open(p.link, "_blank", "noopener"); }}
-                      onKeyDown={(e) => { if (e.key === "Enter") { e.stopPropagation(); window.open(p.link, "_blank", "noopener"); } }}
+                      onClick={(e) => e.stopPropagation()}
                       className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-300 hover:text-white transition-colors"
                     >
                       View Live Project
                       <ExternalLink className="h-4 w-4" />
-                    </span>
+                    </a>
                   )}
                 </div>
-              </button>
+              </div>
             </Reveal>
           ))}
         </div>

@@ -68,7 +68,7 @@ export const Contact = () => {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="relative py-20 sm:py-28 lg:py-32">
+      <section id="contact" className="relative py-16 sm:py-28 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader eyebrow="Contact" title="Let's Build Something Useful." sub="Open to conversations around Product, AI, Automation, Analytics and Technology." />
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16">
