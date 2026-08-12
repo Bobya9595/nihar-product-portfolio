@@ -59,7 +59,7 @@ export const Navbar = () => {
               className="flex items-center gap-2 group"
             >
               <span className="font-display text-lg font-extrabold tracking-tight text-white">
-                {PROFILE.firstName.toUpperCase()}
+                {PROFILE.name}
               </span>
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 pulse-dot" />
             </button>
