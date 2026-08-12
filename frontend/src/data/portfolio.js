@@ -196,7 +196,7 @@ export const AI_FLOW = [
 
 export const SKILLS = [
   { group: "Product", items: ["Product Discovery", "PRD / BRD", "Feature Prioritisation", "Requirement Gathering", "User Research", "Product Analytics"] },
-  { group: "AI & Gen-AI", items: ["Generative AI", "Prompt Engineering", "ChatGPT", "Claude", "Google Gemini", "AI Workflow Automation", "AI-Assisted Product Design"] },
+  { group: "AI & Gen-AI", items: ["Generative AI", "Prompt Engineering", "AI Agents", "ChatGPT", "Claude", "Google Gemini", "AI Workflow Automation", "AI-Assisted Product Design"] },
   { group: "Analytics", items: ["SQL", "Power BI", "Tableau", "KPI Monitoring", "ETL Pipelines", "Dashboarding"] },
   { group: "Execution", items: ["Agile / Scrum", "Stakeholder Management", "Workflow Automation", "Business Analysis"] },
   { group: "Domain", items: ["B2B/B2C E-Commerce", "Supply Chain", "Warehouse Management", "Sales Order Lifecycle", "Fulfillment", "HRMS"] },
