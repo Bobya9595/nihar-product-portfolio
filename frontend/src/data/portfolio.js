@@ -17,7 +17,7 @@ export const PROFILE = {
     "Product professional working at the intersection of business, technology, data and AI — building practical solutions that solve real operational problems.",
   summary:
     "Product & Analytics professional with 3 years of experience in product discovery, PRD/BRD authoring, and requirement gathering across B2B/B2C e-commerce and HR-Tech platforms. Proven in cross-functional stakeholder management, SQL-driven analytics, and workflow automation — with direct exposure to AI-assisted process design and end-to-end product delivery in Agile environments.",
-  experienceBadge: "2.5+ Years Experience",
+  experienceBadge: "3+ Years Experience",
   currentlyBuilding: "AI-powered workflow automation for business operations",
 };
 
