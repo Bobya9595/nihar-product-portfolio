@@ -4,6 +4,8 @@ from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
+import html as html_lib
+import httpx
 from pathlib import Path
 from pydantic import BaseModel, Field, EmailStr, field_validator
 from typing import List
@@ -18,6 +20,12 @@ load_dotenv(ROOT_DIR / '.env')
 mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
+
+# Emergent managed email proxy (constant — survives deployment)
+EMAIL_BASE_URL = "https://integrations.emergentagent.com"
+EMAIL_KEY = os.environ["EMERGENT_EMAIL_KEY"]
+EMAIL_FROM_NAME = os.environ["EMAIL_FROM_NAME"]
+OWNER_EMAIL = os.environ["OWNER_EMAIL"]
 
 app = FastAPI()
 api_router = APIRouter(prefix="/api")
@@ -74,15 +82,62 @@ async def get_status_checks():
     return status_checks
 
 
+async def send_owner_notification(msg: "ContactMessage"):
+    name = html_lib.escape(msg.name)
+    email = html_lib.escape(msg.email)
+    message = html_lib.escape(msg.message).replace("\n", "<br>")
+    html_content = f"""
+    <table width="100%" cellpadding="0" cellspacing="0" style="background:#0A0D12;padding:24px;font-family:Arial,Helvetica,sans-serif;">
+      <tr><td align="center">
+        <table width="560" cellpadding="0" cellspacing="0" style="background:#121824;border:1px solid rgba(255,255,255,0.08);border-radius:16px;overflow:hidden;">
+          <tr><td style="background:#10B981;padding:18px 24px;color:#04160f;font-size:16px;font-weight:bold;">New Portfolio Contact Message</td></tr>
+          <tr><td style="padding:24px;color:#E2E8F0;">
+            <p style="margin:0 0 8px;color:#94A3B8;font-size:12px;text-transform:uppercase;letter-spacing:1px;">From</p>
+            <p style="margin:0 0 16px;font-size:16px;font-weight:bold;color:#ffffff;">{name}</p>
+            <p style="margin:0 0 8px;color:#94A3B8;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Email</p>
+            <p style="margin:0 0 16px;font-size:15px;"><a href="mailto:{email}" style="color:#34D399;">{email}</a></p>
+            <p style="margin:0 0 8px;color:#94A3B8;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Message</p>
+            <p style="margin:0;font-size:15px;line-height:1.6;color:#E2E8F0;">{message}</p>
+          </td></tr>
+          <tr><td style="padding:14px 24px;border-top:1px solid rgba(255,255,255,0.08);color:#64748B;font-size:12px;">Sent from your portfolio contact form.</td></tr>
+        </table>
+      </td></tr>
+    </table>
+    """
+    payload = {
+        "to": [OWNER_EMAIL],
+        "subject": f"New contact message from {msg.name}",
+        "html": html_content,
+        "from_name": EMAIL_FROM_NAME,
+        "contact_email": msg.email,
+    }
+    async with httpx.AsyncClient(timeout=30) as http_client:
+        resp = await http_client.post(
+            f"{EMAIL_BASE_URL}/api/v1/email/send",
+            headers={"X-Email-Key": EMAIL_KEY},
+            json=payload,
+        )
+    resp.raise_for_status()
+    return resp.json().get("id")
+
+
 @api_router.post("/contact")
 async def create_contact(input: ContactCreate):
     try:
         msg = ContactMessage(**input.model_dump())
         await db.contact_messages.insert_one(msg.model_dump())
-        return {"success": True, "id": msg.id, "message": "Message received"}
     except Exception as e:
-        logging.error(f"contact error: {e}")
+        logging.error(f"contact save error: {e}")
         raise HTTPException(status_code=500, detail="Failed to save message")
+
+    email_sent = False
+    try:
+        await send_owner_notification(msg)
+        email_sent = True
+    except Exception as e:
+        logging.error(f"contact email error: {e}")
+
+    return {"success": True, "id": msg.id, "email_sent": email_sent, "message": "Message received"}
 
 
 app.include_router(api_router)
