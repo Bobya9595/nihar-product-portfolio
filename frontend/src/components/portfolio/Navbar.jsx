@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { PROFILE } from "../../data/portfolio";
-import { ThemeToggle } from "./ThemeToggle";
 
 const NAV_ITEMS = [
   { label: "Home", id: "home" },
@@ -90,7 +89,6 @@ export const Navbar = () => {
             </div>
 
             <div className="flex items-center gap-2">
-              <ThemeToggle />
               <a
                 data-testid="nav-resume-button"
                 href={PROFILE.resume}
