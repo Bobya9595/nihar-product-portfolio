@@ -9,6 +9,7 @@ import { CursorGlow } from "@/components/portfolio/CursorGlow";
 const About = lazy(() => import("@/components/portfolio/About").then((m) => ({ default: m.About })));
 const Experience = lazy(() => import("@/components/portfolio/Experience").then((m) => ({ default: m.Experience })));
 const Projects = lazy(() => import("@/components/portfolio/Projects").then((m) => ({ default: m.Projects })));
+const AIPractice = lazy(() => import("@/components/portfolio/AIPractice").then((m) => ({ default: m.AIPractice })));
 const Process = lazy(() => import("@/components/portfolio/Process").then((m) => ({ default: m.Process })));
 const AIWorkflow = lazy(() => import("@/components/portfolio/AIWorkflow").then((m) => ({ default: m.AIWorkflow })));
 const Skills = lazy(() => import("@/components/portfolio/Skills").then((m) => ({ default: m.Skills })));
@@ -27,6 +28,7 @@ function App() {
           <About />
           <Experience />
           <Projects />
+          <AIPractice />
           <Process />
           <AIWorkflow />
           <Skills />
