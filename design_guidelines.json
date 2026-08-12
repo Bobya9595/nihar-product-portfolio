@@ -1,0 +1,259 @@
+{
+  "project_summary": {
+    "target_person": "Nihar Chopade",
+    "title": "Assistant Manager - Product at Pluckk (Essar Group)",
+    "positioning": "PRODUCT • AI • AUTOMATION • ANALYTICS • TECHNOLOGY",
+    "app_type": "portfolio",
+    "theme_mode": "dark-first",
+    "aesthetic_references": [
+      "Linear.app",
+      "Vercel",
+      "Stripe",
+      "Notion",
+      "Modern AI Startup Websites"
+    ],
+    "target_feeling": "High-craft engineering, data-driven precision, product architecture authority, recruiter-focused conversion, sleek micro-interactions"
+  },
+  "color_system": {
+    "archetype": "THE PERFORMANCE PRO / HIGH-TECH PRECISION",
+    "backgrounds": {
+      "primary": "#0A0D12",
+      "secondary_surface": "#121824",
+      "card_bg": "#161E2E",
+      "card_hover": "#1C263A",
+      "border_subtle": "rgba(255, 255, 255, 0.08)",
+      "border_highlight": "rgba(16, 185, 129, 0.3)"
+    },
+    "accents": {
+      "primary_emerald": "#10B981",
+      "emerald_hover": "#059669",
+      "emerald_glow": "rgba(16, 185, 129, 0.15)",
+      "secondary_purple": "#8B5CF6",
+      "purple_glow": "rgba(139, 92, 246, 0.12)",
+      "blue_glow": "rgba(59, 130, 246, 0.1)"
+    },
+    "typography_colors": {
+      "primary_heading": "#FFFFFF",
+      "secondary_body": "#94A3B8",
+      "muted_label": "#64748B",
+      "accent_text": "#34D399"
+    },
+    "contrast_rules": [
+      "All primary body text `#94A3B8` on `#0A0D12` has WCAG AAA 7.2:1 contrast ratio",
+      "Interactive hover state MUST explicitly re-declare text color e.g. `hover:text-white`",
+      "No pure black `#000000` - background tinted with deep dark blue-grey `#0A0D12`",
+      "Gradients restricted to 1px glowing borders and faint radial background lights (<10% opacity)"
+    ]
+  },
+  "typography": {
+    "font_family_heading": "Outfit, Clash Display, sans-serif",
+    "font_family_body": "Plus Jakarta Sans, Inter, sans-serif",
+    "font_family_mono": "JetBrains Mono, Fira Code, monospace",
+    "google_fonts_import": "https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap",
+    "scale": {
+      "hero_title": "text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight",
+      "section_heading": "text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight",
+      "subsection_heading": "text-xl sm:text-2xl font-semibold",
+      "card_heading": "text-lg sm:text-xl font-semibold",
+      "body_base": "text-sm sm:text-base leading-relaxed",
+      "body_small": "text-xs sm:text-sm leading-normal",
+      "mono_label": "font-mono text-xs tracking-wider uppercase"
+    },
+    "rules": [
+      "DO NOT use Inter or Roboto for Main Headings (H1/H2). Use Outfit for punchy display headers.",
+      "Always set `tracking-tight` on text above 32px.",
+      "Overline tags/labels MUST use Monospace + uppercase + tracking-widest e.g. `[PRODUCT • AI • AUTOMATION]`."
+    ]
+  },
+  "spacing_and_layout": {
+    "grid_system": "Swiss Tech Bento Grid & Linear Columns",
+    "container_padding": "px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto",
+    "section_vertical_spacing": "py-16 sm:py-24 lg:py-32",
+    "card_padding": "p-6 sm:p-8",
+    "gap_scale": {
+      "tight": "gap-4",
+      "medium": "gap-6 sm:gap-8",
+      "loose": "gap-8 sm:gap-12"
+    },
+    "layout_rules": [
+      "Generous spacing: 2x standard padding between major sections to feel high-end editorial.",
+      "Containers with borders MUST have at least `p-6` or `p-8` internal padding.",
+      "Grid children must be direct children or use `subgrid` for framer-motion item wrappers."
+    ]
+  },
+  "component_design_system": {
+    "navbar": {
+      "style": "Floating glassmorphism pill centered at top",
+      "background": "bg-[#121824]/80 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/50",
+      "features": [
+        "Brand mark 'NIHAR' with glowing green status pulse dot ('Available for Leadership & Advisory')",
+        "Links: Home, About, Experience, Projects, Skills, Contact",
+        "Active section indicator pill sliding smoothly",
+        "CTA Button: 'Resume / CV' with download dropdown/modal",
+        "Mobile hamburger overlay with smooth blur transition"
+      ]
+    },
+    "hero_section": {
+      "eyebrow": "PRODUCT • AI • AUTOMATION • ANALYTICS • TECHNOLOGY",
+      "headline": "Turning Business Problems Into Products, Automation & AI Solutions",
+      "subheadline": "Assistant Manager - Product at Pluckk (Essar Group). Bridging product strategy, AI workflows, scalable system design, and growth analytics.",
+      "interactive_element": "Product Thinking System Node Diagram (PROBLEM → DISCOVER → DEFINE → BUILD → AUTOMATE → MEASURE)",
+      "cta_buttons": [
+        "Primary: 'Explore Featured Projects' (Emerald glow button with arrow micro-animation)",
+        "Secondary: 'Interactive AI Workflow' (Border shimmer with terminal icon)"
+      ]
+    },
+    "product_thinking_system_diagram": {
+      "concept": "Interactive Node System connecting 6 stages",
+      "stages": [
+        {"id": "problem", "title": "1. PROBLEM", "desc": "Identify revenue leaks, operational bottlenecks & user friction", "metrics": "User Interviews, Funnel Leakage, Loss Analysis"},
+        {"id": "discover", "title": "2. DISCOVER", "desc": "Deep data analytics, cohort behavior & stakeholder sync", "metrics": "Mixpanel, SQL queries, Product Telemetry"},
+        {"id": "define", "title": "3. DEFINE", "desc": "PRD creation, feature scoping & ROI prediction matrix", "metrics": "PRDs, User Stories, Impact vs Effort Matrix"},
+        {"id": "build", "title": "4. BUILD", "desc": "Cross-functional engineering leadership & sprint execution", "metrics": "Agile Sprints, Design Systems, API Spec"},
+        {"id": "automate", "title": "5. AUTOMATE", "desc": "Embedding LLMs, automated triggers & internal tooling", "metrics": "AI Agents, Python Scripts, Zapier/n8n Flow"},
+        {"id": "measure", "title": "6. MEASURE", "desc": "Post-launch retention tracking, A/B tests & iteration", "metrics": "LTV:CAC, Retention Cohorts, CSAT / NPS"}
+      ],
+      "interactivity": "Hovering or clicking nodes illuminates connecting laser pulse paths and opens stage detail drawers."
+    },
+    "experience_timeline": {
+      "title": "Interactive Experience",
+      "items": [
+        {
+          "role": "Assistant Manager - Product",
+          "company": "Pluckk (Essar Group)",
+          "period": "2023 - Present",
+          "summary": "Leading product roadmap, e-commerce fresh food tech, AI demand forecasting, and growth funnel optimization.",
+          "highlights": [
+            "Increased checkout conversion by 18% through AI-backed recommendation engine",
+            "Built automated inventory intelligence reducing waste by 24%",
+            "Spearheaded supply chain tracking application for multi-city fulfillment centers"
+          ],
+          "tech_stack": ["Product Strategy", "Growth Analytics", "AI/ML Workflows", "SQL", "Mixpanel", "Figma"]
+        },
+        {
+          "role": "Senior Product & Analytics Lead",
+          "company": "Essar Group / Enterprise Tech",
+          "period": "2021 - 2023",
+          "summary": "Managed enterprise analytics platforms, executive BI dashboards, and digital transformation initiatives.",
+          "highlights": [
+            "Automated reporting workflows across 4 business units saving 120+ hours monthly",
+            "Designed unified customer data platform (CDP) for multi-channel attribution"
+          ],
+          "tech_stack": ["Data Architecture", "Tableau", "Python", "Predictive Analytics", "Agile"]
+        }
+      ]
+    },
+    "featured_projects": {
+      "card_style": "Bento Cards with subtle border glow, tags, key metrics callout, and 'Read Case Study' modal trigger",
+      "modal_features": "Rich case-study modal with Problem Statement, Solution Architecture, Key Metrics, Product Screenshots, and Impact Breakdown"
+    },
+    "ai_automation_terminal": {
+      "concept": "Interactive IDE/Terminal component demonstrating Nihar's hands-on AI & automation capabilities",
+      "tabs": [
+        "AI Demand Forecaster (Python)",
+        "Funnel Optimization Agent (LangChain)",
+        "Customer Churn Predictor (SQL + ML)"
+      ],
+      "interactivity": "Live terminal simulator with code typing effect, execution outputs, and flow nodes"
+    },
+    "skills_clusters": {
+      "categories": [
+        {"name": "Product Strategy", "skills": ["PRD Authoring", "Roadmapping", "Feature Prioritization", "User Research", "A/B Testing", "Go-To-Market"]},
+        {"name": "AI & Automation", "skills": ["LLM Integration", "Prompt Engineering", "n8n / Zapier Workflows", "AI Agents", "Python Automation", "Process Mining"]},
+        {"name": "Analytics & Data", "skills": ["Advanced SQL", "Mixpanel", "Amplitude", "Cohort Analysis", "Data Modeling", "Tableau / Metabase"]},
+        {"name": "Tech & Execution", "skills": ["REST APIs", "System Architecture", "Agile / Scrum", "Wireframing", "Figma", "Jira"]}
+      ]
+    },
+    "contact_form": {
+      "features": [
+        "Full client-side validation using React state / Hook Form",
+        "Toast feedback on submission using Sonner",
+        "Direct email copy button and LinkedIn / GitHub / Resume quick links",
+        "Data test-ids on all inputs"
+      ]
+    }
+  },
+  "motion_and_microinteractions": {
+    "engine": "Framer Motion + Lenis Smooth Scroll",
+    "interactions": [
+      "Subtle background radial glow tracking mouse movement on hero",
+      "Smooth line drawing animation on node connections in Product Thinking System",
+      "Card lift with 1px border shimmer on hover e.g. `hover:-translate-y-1 hover:border-emerald-500/50`",
+      "Magnetic effect on primary CTA buttons with arrow translation e.g. `group-hover:translate-x-1`",
+      "Modal spring entrance and backdrop blur backdrop-blur-md",
+      "Strict compliance with `prefers-reduced-motion` to disable transforms when requested"
+    ]
+  },
+  "image_urls": {
+    "hero_avatar": {
+      "url": "https://images.unsplash.com/photo-1764546899196-b53061b1b609?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzl8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBwcm9kdWN0JTIwbWFuYWdlciUyMHBvcnRyYWl0JTIwZGFyayUyMGJhY2tncm91bmR8ZW58MHx8fHwxNzg2NTUxMDM0fDA&ixlib=rb-4.1.0&q=85",
+      "alt": "Nihar Chopade - Professional Product Manager Portrait",
+      "usage": "Hero or About section profile photo"
+    },
+    "ai_analytics_preview": {
+      "url": "https://images.unsplash.com/photo-1733412505442-36cfa59a4240?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHwyfHxhaSUyMGFuYWx5dGljcyUyMGRhc2hib2FyZCUyMGludGVyZmFjZSUyMGRhcmt8ZW58MHx8fHwxNzg2NTUxMDQ0fDA&ixlib=rb-4.1.0&q=85",
+      "alt": "AI Data Analytics & Workflow Visual",
+      "usage": "Capability visual in About or AI Terminal background"
+    },
+    "dashboard_mockup": {
+      "url": "https://images.unsplash.com/photo-1625838144804-300f3907c110?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDJ8MHwxfHNlYXJjaHwxfHxhaSUyMGFuYWx5dGljcyUyMGRhc2hib2FyZCUyMGludGVyZmFjZSUyMGRhcmt8ZW58MHx8fHwxNzg2NTUxMDQ0fDA&ixlib=rb-4.1.0&q=85",
+      "alt": "Product Intelligence Dashboard",
+      "usage": "Case study modal preview image"
+    }
+  },
+  "testing_and_accessibility": {
+    "data_testids": [
+      "navbar",
+      "nav-link-home",
+      "nav-link-about",
+      "nav-link-experience",
+      "nav-link-projects",
+      "nav-link-skills",
+      "nav-link-contact",
+      "resume-download-button",
+      "hero-section",
+      "hero-headline",
+      "hero-cta-primary",
+      "product-thinking-node-problem",
+      "product-thinking-node-discover",
+      "product-thinking-node-define",
+      "product-thinking-node-build",
+      "product-thinking-node-automate",
+      "product-thinking-node-measure",
+      "experience-timeline",
+      "project-card-1",
+      "project-card-2",
+      "case-study-modal",
+      "modal-close-button",
+      "skills-cluster-section",
+      "ai-terminal-container",
+      "contact-form",
+      "contact-input-name",
+      "contact-input-email",
+      "contact-input-message",
+      "contact-submit-button"
+    ],
+    "accessibility": [
+      "ARIA roles for node diagrams (role='region', aria-label)",
+      "High contrast text meeting APCA / WCAG AA standards",
+      "Keyboard navigable modals with ESC key trap release",
+      "Focus rings with emerald accent ring: `focus-visible:ring-2 focus-visible:ring-emerald-500`"
+    ]
+  },
+  "instructions_to_main_agent": [
+    "Use Lucide-React icons throughout (e.g. Brain, Cpu, LineChart, Sparkles, Terminal, ArrowRight, CheckCircle, Download, FolderGit2).",
+    "Make sure the navbar is fixed/sticky at the top with `z-50` and padding offset so main content is not hidden.",
+    "Implement the 'Product Thinking System' as an interactive node flow with svg connecting lines and clickable stages that show real PM methodology details.",
+    "Ensure Case Study Modals open with full project breakdown: Context, Problem, Strategy, Architecture, Outcomes/Metrics, and Tech Stack.",
+    "The AI+Automation Terminal section must feel like a real interactive developer/PM tool with executable code snippets and live output tabs.",
+    "All form fields must validate email format and non-empty inputs with clear user error messaging and toast notification via Sonner.",
+    "Ensure all interactive components have exact `data-testid` attributes as specified."
+  ],
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": {
+    "anti_slop_rule": "Avoid generic centered cards, bright full-screen gradients, and plain white cards. Use rich charcoal surfaces (#121824, #161E2E) with 1px border strokes (rgba(255,255,255,0.08)) and fine emerald glow highlights.",
+    "spacing_philosophy": "Use generous spacing (2-3x typical). Section padding py-20 to py-32. Container padding minimum p-6.",
+    "no_emoji_icons": "NEVER use AI assistant emoji characters like 🤖, 🧠, 💡, 🎯 in place of professional SVG icons.",
+    "toast_integration": "Use `sonner` for toast notifications.",
+    "contrast_integrity": "Always explicitly define text hover colors (`hover:text-white`)."
+  }
+}
