@@ -1,11 +1,22 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
-import { NAV, PROFILE } from "../../data/portfolio";
+import { PROFILE } from "../../data/portfolio";
+import { ThemeToggle } from "./ThemeToggle";
+
+const NAV_ITEMS = [
+  { label: "Home", id: "home" },
+  { label: "About", id: "about" },
+  { label: "Experience", id: "experience" },
+  { label: "Projects", id: "projects" },
+  { label: "AI Practice", id: "ai-practice" },
+  { label: "Skills", id: "skills" },
+  { label: "Contact", id: "contact" },
+];
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState("Home");
+  const [active, setActive] = useState("home");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -15,28 +26,24 @@ export const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    const ids = NAV.map((n) => n.toLowerCase());
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
-          if (e.isIntersecting) {
-            const label = NAV.find((n) => n.toLowerCase() === e.target.id);
-            if (label) setActive(label);
-          }
+          if (e.isIntersecting) setActive(e.target.id);
         });
       },
       { rootMargin: "-45% 0px -50% 0px" }
     );
-    ids.forEach((id) => {
+    NAV_ITEMS.forEach(({ id }) => {
       const el = document.getElementById(id);
       if (el) obs.observe(el);
     });
     return () => obs.disconnect();
   }, []);
 
-  const go = (label) => {
+  const go = (id) => {
     setOpen(false);
-    document.getElementById(label.toLowerCase())?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -55,8 +62,8 @@ export const Navbar = () => {
           >
             <button
               data-testid="nav-logo"
-              onClick={() => go("Home")}
-              className="flex items-center gap-2 group"
+              onClick={() => go("home")}
+              className="flex items-center gap-2 group shrink-0"
             >
               <span className="font-display text-lg font-extrabold tracking-tight text-white">
                 {PROFILE.name}
@@ -64,25 +71,26 @@ export const Navbar = () => {
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 pulse-dot" />
             </button>
 
-            <div className="hidden md:flex items-center gap-1">
-              {NAV.map((n) => (
+            <div className="hidden lg:flex items-center gap-1">
+              {NAV_ITEMS.map(({ label, id }) => (
                 <button
-                  key={n}
-                  data-testid={`nav-link-${n.toLowerCase()}`}
-                  onClick={() => go(n)}
-                  className={`relative px-3.5 py-2 text-sm font-medium rounded-lg transition-colors ${
-                    active === n ? "text-white" : "text-slate-400 hover:text-white"
+                  key={id}
+                  data-testid={`nav-link-${id}`}
+                  onClick={() => go(id)}
+                  className={`relative px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
+                    active === id ? "text-white" : "text-slate-400 hover:text-white"
                   }`}
                 >
-                  {active === n && (
+                  {active === id && (
                     <span className="absolute inset-0 rounded-lg bg-white/5 border border-white/10" />
                   )}
-                  <span className="relative">{n}</span>
+                  <span className="relative whitespace-nowrap">{label}</span>
                 </button>
               ))}
             </div>
 
             <div className="flex items-center gap-2">
+              <ThemeToggle />
               <a
                 data-testid="nav-resume-button"
                 href={PROFILE.resume}
@@ -94,7 +102,7 @@ export const Navbar = () => {
               <button
                 data-testid="mobile-menu-toggle"
                 onClick={() => setOpen((o) => !o)}
-                className="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-lg border border-white/10 text-white"
+                className="lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-lg border border-white/10 text-white"
                 aria-label="Toggle menu"
               >
                 {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -107,23 +115,23 @@ export const Navbar = () => {
       {/* Mobile overlay */}
       <div
         data-testid="mobile-menu"
-        className={`fixed inset-0 z-40 md:hidden transition-all duration-300 ${
+        className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ${
           open ? "opacity-100 pointer-events-auto visible" : "opacity-0 pointer-events-none invisible"
         }`}
       >
         <div className="absolute inset-0 bg-[#0A0D12]/90 backdrop-blur-xl" onClick={() => setOpen(false)} />
         <div className="relative pt-28 px-6 flex flex-col gap-2">
-          {NAV.map((n, i) => (
+          {NAV_ITEMS.map(({ label, id }, i) => (
             <button
-              key={n}
-              data-testid={`mobile-nav-link-${n.toLowerCase()}`}
-              onClick={() => go(n)}
+              key={id}
+              data-testid={`mobile-nav-link-${id}`}
+              onClick={() => go(id)}
               style={{ transitionDelay: open ? `${i * 40}ms` : "0ms" }}
               className={`text-left text-2xl font-display font-semibold py-3 border-b border-white/5 transition-all duration-300 ${
                 open ? "translate-x-0 opacity-100" : "translate-x-4 opacity-0"
-              } ${active === n ? "text-emerald-400" : "text-white"}`}
+              } ${active === id ? "text-emerald-400" : "text-white"}`}
             >
-              {n}
+              {label}
             </button>
           ))}
           <a

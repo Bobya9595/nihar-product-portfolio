@@ -4,6 +4,15 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#0A0D12" />
+        <script>
+          (function () {
+            try {
+              var t = localStorage.getItem('theme');
+              if (!t) { t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'; }
+              if (t === 'light') document.documentElement.classList.add('light');
+            } catch (e) {}
+          })();
+        </script>
         <meta name="description" content="Portfolio of Nihar Chopade — Product professional working across product management, AI, automation, analytics and technology." />
         <meta name="author" content="Nihar Chopade" />
         <meta property="og:type" content="website" />
