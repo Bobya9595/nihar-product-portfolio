@@ -6,7 +6,7 @@ export const PROFILE = {
   title: "Assistant Manager — Product",
   company: "Pluckk (Essar Group)",
   location: "Mumbai, India",
-  email: "nihar.chopade@gmail.com",
+  email: "nihar55chopade@gmail.com",
   phone: "+91 88889 08202",
   linkedin: "https://www.linkedin.com/in/nihar-chopade",
   resume: "/assets/Nihar_Chopade_CV.pdf",
