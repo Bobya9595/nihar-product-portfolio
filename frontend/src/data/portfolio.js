@@ -77,6 +77,27 @@ export const EDUCATION = [
 
 export const PROJECTS = [
   {
+    id: "karodesk",
+    title: "KaroDesk — AI Virtual Office",
+    blurb: "An AI-powered virtual office that brings AI employees, task management, activity tracking and workflow automation into one interactive workspace.",
+    tags: ["AI Agents", "Automation", "Product Design", "Workflow Management"],
+    flow: ["AI Employees", "Task Management", "Activity Tracking", "Workflow Automation", "Virtual Office"],
+    company: "AI Virtual Office Platform",
+    link: "https://karodesk.com",
+    featured: true,
+    study: {
+      problem: "Teams and founders juggle disconnected tools to delegate work, track tasks and monitor activity — with no single AI-native workspace to run day-to-day operations.",
+      context: "A self-initiated AI product exploring how AI employees, task management and automation can live inside one interactive virtual office.",
+      role: "Conceived and designed the product end-to-end — defining the AI employee experience, task and activity workflows, and the overall interaction model.",
+      approach: "Combined AI agents acting as virtual employees with structured task management, activity tracking and automation rules, all inside a single interactive workspace.",
+      solution: "An AI-powered virtual office where AI employees handle tasks, activity is tracked automatically, and workflows run with minimal manual input.",
+      technology: ["AI Agents", "Workflow Automation", "Task Management", "Activity Tracking", "Product Design"],
+      thinking: "Treated AI agents as first-class team members — giving them tasks, visibility and accountability inside a workspace that feels familiar to how real teams already work.",
+      outcome: "Delivered a working virtual office experience unifying AI employees, task management, activity tracking and workflow automation in one workspace.",
+      learning: "Designing multi-agent AI products means designing for trust and visibility as much as capability — activity tracking is what makes automation feel safe to rely on.",
+    },
+  },
+  {
     id: "legalformat",
     title: "LegalFormat.in",
     blurb: "An AI-powered legal document generation platform for creating Indian legal agreements.",
